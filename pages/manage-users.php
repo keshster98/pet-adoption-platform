@@ -18,7 +18,7 @@
   require "parts/header.php" 
 ?>
 
-<div class="container mx-auto my-5" style="max-width: 800px;">
+<div class="container mx-auto my-5" style="max-width: 800px; height: 70vh;">
     <div class="d-flex justify-content-between align-items-center mb-2">
         <h1 class="h1">Manage Users</h1>
         <a href="/manage-users-add" class="btn btn-primary btn-sm shadow-lg p-2"><i class="bi bi-person-plus" style="margin-right: 5px;"></i> Add New User</a>
@@ -55,34 +55,61 @@
                             <div class="buttons">
                                 <a href="/manage-users-edit?id=<?= $user["id"]; ?>&name=<?= $user["name"]; ?>" class="btn btn-success btn-sm me-2"><i class="bi bi-pencil"></i></a>
                                 <a href="/manage-users-change-password?id=<?= $user["id"]; ?>&name=<?= $user["name"]; ?>" class="btn btn-warning btn-sm me-2"><i class="bi bi-key"></i></a>
-                                <?php if($user["role"] !== "admin"): ?>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-user-<?= $user["id"]; ?>">
+                                <?php if($user["role"] === "admin"): ?>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-user-<?= $user["id"]; ?>" disabled>
                                     <i class="bi bi-trash3"></i>
-                                </button>
+                                    </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="delete-user-<?= $user["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete "<?= $user["name"]; ?>"?</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body text-start">
-                                                Are you sure? This action cannot be reversed!
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form method="POST" action="/user/delete" style="display: inline-block;">
-                                                    <input type="hidden" name="id" value="<?= $user["id"]; ?>" />
-                                                    <input type="hidden" name="name" value="<?= $user["name"]; ?>" />
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="delete-user-<?= $user["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete "<?= $user["name"]; ?>"?</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                    Are you sure? This action cannot be reversed!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="POST" action="/user/delete" style="display: inline-block;">
+                                                        <input type="hidden" name="id" value="<?= $user["id"]; ?>" />
+                                                        <input type="hidden" name="name" value="<?= $user["name"]; ?>" />
+                                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php endif; ?>
+                                <?php else: ?>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-user-<?= $user["id"]; ?>">
+                                    <i class="bi bi-trash3"></i>
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="delete-user-<?= $user["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete "<?= $user["name"]; ?>"?</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                    Are you sure? This action cannot be reversed!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="POST" action="/user/delete" style="display: inline-block;">
+                                                        <input type="hidden" name="id" value="<?= $user["id"]; ?>" />
+                                                        <input type="hidden" name="name" value="<?= $user["name"]; ?>" />
+                                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>    
                             </div>
                         </td>
                     </tr>

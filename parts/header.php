@@ -10,18 +10,19 @@
         <header id="header">
             <nav class="container navbar navbar-expand-lg nav-custom">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Pet Adoption</a>
+                    <a class="navbar-brand" href="#">Pet Adoption Platform</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
-                            <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]["role"] === "admin")): ?>
+                            <?php if(isset($_SESSION[ "user"]) && ($_SESSION["user"]["role"] === "admin")): ?>
                                 <a class="nav-link" href="/adoption">Adoption Listings</a>
                                 <a class="nav-link" href="/dashboard">Dashboard</a>
+                                <a class="nav-link" href="/contact-us">Contact Us</a>
                                 <a class="nav-link" href="/logout">Logout</a>
                             <?php elseif (isset($_SESSION["user"]) && ($_SESSION["user"]["role"] === "volunteer")): ?>
                                 <a class="nav-link" href="/volunteering">Volunteering</a>
                                 <a class="nav-link" href="/dashboard">Dashboard</a>
-                                <a class="nav-link" href="contact-us">Contact Us</a>
+                                <a class="nav-link" href="/contact-us">Contact Us</a>
                                 <a class="nav-link" href="/logout">Logout</a>
                             <?php elseif (isset($_SESSION["user"]) && ($_SESSION["user"]["role"] === "user")): ?>
                                 <a class="nav-link" href="/adoption">Adoption Listings</a>

@@ -27,6 +27,6 @@
     // Fetch the details of the logged in user who applied to be a volunteer
     $volunteer = $query->fetch();
 
-    setSuccess($volunteer["name"] . ", you have successfully applied to be a volunteer, stay tuned!", "/ m nmm  MMMMMMMMMMMMMMMMMMMMMMNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM                           ")
+    setSuccess($volunteer["name"] . ", you have successfully applied to be a volunteer, stay tuned!", "/")
 ?>
                                 m
